@@ -1,0 +1,37 @@
+name: Post report
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install required packages
+      run: |
+        python -m pip install --upgrade pip
+        pip install cml
+
+    - name: Generate Report
+      run: |
+        echo "## Model Metrics" > report.md
+        cat ./Results/metrics.txt >> report.md
+        echo '\n## Confusion Matrix Plot' >> report.md
+        echo '![Confusion Matrix](./Results/model_results.png)' >> report.md
+
+    - name: Create CML Comment
+      env:
+        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cml comment create report.md
