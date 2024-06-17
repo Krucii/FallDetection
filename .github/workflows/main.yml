@@ -18,7 +18,7 @@ jobs:
       with:
         python-version: '3.x'
 
-    - uses: iterative/setup-cml@v1
+    - uses: iterative/setup-cml@v2
     - name: Generate Report
       run: |
         echo "## Model Metrics" > report.md
