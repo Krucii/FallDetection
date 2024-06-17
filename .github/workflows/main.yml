@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
@@ -28,6 +28,6 @@ jobs:
 
     - name: Create CML Comment
       env:
-        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO_TOKEN: ${{ secrets.API_KEY }}
       run: |
         cml comment create report.md
