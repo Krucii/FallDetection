@@ -1,0 +1,12 @@
+train: C:\Users\remig\Downloads\fall-detection.v3i.yolov5pytorch\train\images
+val: C:\Users\remig\Downloads\fall-detection.v3i.yolov5pytorch\valid\images
+
+nc: 5
+names: ['bending', 'crawling', 'lying', 'sitting', 'standing']
+
+roboflow:
+  workspace: falldet
+  project: fall-detection-d8ls2
+  version: 3
+  license: Private
+  url: https://app.roboflow.com/falldet/fall-detection-d8ls2/3
